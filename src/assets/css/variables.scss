@@ -4,10 +4,10 @@
   --violet200: hsl(279, 6%, 55%);
   --violet300: hsl(278, 68%, 11%);
   --red: hsl(0, 100%, 66%);
-  --gradient: linear-gradient(90deg, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+  --gradient: linear-gradient(75deg, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
 
-  --font-size: 18px;
+  --font-size: 1em;
 }
 
-$mobile: 375px;
+$mobile: 450px;
 $desktop: 1440px;
