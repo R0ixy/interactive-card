@@ -1,0 +1,13 @@
+:root {
+  --white: hsl(0, 0%, 100%);
+  --violet100: hsl(270, 3%, 87%);
+  --violet200: hsl(279, 6%, 55%);
+  --violet300: hsl(278, 68%, 11%);
+  --red: hsl(0, 100%, 66%);
+  --gradient: linear-gradient(90deg, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+
+  --font-size: 18px;
+}
+
+$mobile: 375px;
+$desktop: 1440px;
