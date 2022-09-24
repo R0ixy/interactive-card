@@ -1,65 +1,52 @@
 import React, { FC, useState } from 'react';
+import { useForm, FormProvider } from 'react-hook-form';
 
-import styles from './styles.module.scss';
 import cardLogo from '../../assets/images/card-logo.svg';
 import { AfterSubmit } from '../after-submit/after-submit';
 import { CardForm } from '../card-form/card-form';
+import { ICardForm } from '../../common/types/card-from.type';
 
+import styles from './styles.module.scss';
 
 const CardPage: FC = () => {
-  const [cardNumber, setCardNumber] = useState('0000000000000000');
-  const [holderName, setHolderName] = useState('Jane Appleseed');
-  const [expireDay, setExpireDay] = useState('00');
-  const [expireMonth, setExpireMonth] = useState('00');
-  const [cvv, setCvv] = useState('000');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const methods = useForm<ICardForm>();
 
-  const handleNumber = (e: React.ChangeEvent<HTMLFormElement>) => {
-    setCardNumber(e.target.value);
-  };
-  const handleName = (e: React.ChangeEvent<HTMLFormElement>) => {
-    setHolderName(e.target.value);
-  };
-  const handleExpireDay = (e: React.ChangeEvent<HTMLFormElement>) => {
-    setExpireDay(e.target.value);
-  };
-  const handleExpireMonth = (e: React.ChangeEvent<HTMLFormElement>) => {
-    setExpireMonth(e.target.value);
-  };
-  const handleCvv = (e: React.ChangeEvent<HTMLFormElement>) => {
-    setCvv(e.target.value);
-  };
-  const handleSubmit = () => {
+  const closeForm = () => {
     setIsSubmitted(true);
   };
-
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.coloredWrapper}>
         <div className={styles.cardFront}>
           <img src={cardLogo} alt="card logo" className={styles.cardFrontLogo} />
-          <div className={styles.cardNumber}>{cardNumber.replace(/(.{4})/g, "$1 ").trim()}</div>
-          <div className={styles.cardHolderName}>{holderName}</div>
-          <div className={styles.cardExpireDate}>{expireDay}/{expireMonth}</div>
+          <div className={styles.cardNumber}>{
+            methods.watch('cardNumber') ?
+            methods.watch('cardNumber')?.replace(/(.{4})/g, "$1 ").trim() : '0000 0000 0000 0000'
+          }</div>
+          <div className={styles.cardHolderName}>{
+            methods.watch('holderName') ? methods.watch('holderName') : 'Jane Appleseed'
+          }</div>
+          <div className={styles.cardExpireDate}>{
+            methods.watch('expireDay') ? methods.watch('expireDay') : '00'
+          }/{
+            methods.watch('expireMonth') ? methods.watch('expireMonth') : '00'
+          }</div>
         </div>
         <div className={styles.cardBack}>
-          <div className={styles.cardBackCVV}>{cvv}</div>
+          <div className={styles.cardBackCVV}>{
+            methods.watch('cvv') ? methods.watch('cvv') : '000'
+          }</div>
         </div>
       </div>
       <div className={styles.whiteWrapper}>
         {isSubmitted ? <AfterSubmit /> :
-          <CardForm
-          handleNumber={handleNumber}
-          handleName={handleName}
-          handleExpireDay={handleExpireDay}
-          handleExpireMonth={handleExpireMonth}
-          handleCvv={handleCvv}
-          handleSubmit={handleSubmit}
-        /> }
+          <FormProvider {...methods} >
+            <CardForm closeForm={closeForm}/>
+          </FormProvider>}
       </div>
     </div>
-
   );
 };
 

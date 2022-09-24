@@ -1,55 +1,50 @@
 import React, { FC } from 'react';
 import styles from './styles.module.scss';
 
-interface ICardForm {
-  handleNumber: React.ChangeEventHandler<any>;
-  handleName: React.ChangeEventHandler<any>;
-  handleExpireDay: React.ChangeEventHandler<any>;
-  handleExpireMonth: React.ChangeEventHandler<any>;
-  handleCvv: React.ChangeEventHandler<any>;
-  handleSubmit: React.MouseEventHandler<any>;
-}
+import { useFormContext } from 'react-hook-form';
+import { ICardForm } from '../../common/types/card-from.type';
 
-const CardForm: FC<ICardForm> = (
-  {
-    handleName,
-    handleNumber,
-    handleExpireDay,
-    handleExpireMonth,
-    handleCvv,
-    handleSubmit
-  }
-) => {
+const CardForm: FC<{ closeForm: () => void }> = ({ closeForm }) => {
+  const {register, handleSubmit, formState: {errors}} = useFormContext<ICardForm>();
+
+  const onSubmit = (data: ICardForm) => {
+    console.log(data);
+    closeForm();
+  };
 
   return (
-    <div className={styles.formWrapper}>
-      <label htmlFor="name">cardholder name</label>
+    <form className={styles.formWrapper} onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor="holderName">cardholder name</label>
       <input
-        name="name"
         placeholder="e.g. Jane Appleseed"
-        onChange={handleName}
+        {...register('holderName', {required: true})}
       />
-      <label htmlFor="number">card number</label>
+      <label htmlFor="cardNumber">card number</label>
       <input
-        name="number"
         placeholder="e.g. 1234 5678 9123 0000"
-        onChange={handleNumber}
+        {...register('cardNumber', {required: true})}
       />
       <div className={styles.cardDateCVV}>
         <label>exp. date (mm/yy)</label>
         <div className={styles.cardDate}>
-          <input placeholder="MM" onChange={handleExpireDay}/>
-          <input placeholder="YY" onChange={handleExpireMonth}/>
+          <input
+            placeholder="MM"
+            {...register('expireDay', {required: true, min: 0o1, max: 12})}
+          />
+          <input
+            placeholder="YY"
+            {...register('expireMonth', {required: true, minLength: 2, maxLength: 2})}
+          />
         </div>
         <label>cvc</label>
         <input
           className={styles.cvv}
           placeholder="e.g 123"
-          onChange={handleCvv}
+          {...register('cvv', {required: true, minLength: 3, maxLength: 3})}
         />
       </div>
-      <button onClick={handleSubmit}>Confirm</button>
-    </div>
+      <button type="submit">Confirm</button>
+    </form>
   );
 };
 
