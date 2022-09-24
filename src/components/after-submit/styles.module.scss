@@ -9,6 +9,7 @@
   button {
     width: 24rem;
     height: 50px;
+    min-height: 50px;
     border-radius: 10px;
     border: 1px solid var(--violet300);
     box-sizing: border-box;
@@ -54,5 +55,12 @@
     button {
       width: 100%;
     }
+  }
+}
+
+@media (max-height: 670px) {
+  .afterSubmit {
+    padding-top: 10rem;
+    padding-bottom: 50px;
   }
 }
