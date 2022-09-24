@@ -1,0 +1,81 @@
+@import "../../assets/css/variables";
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  button,
+  input {
+    border-radius: 10px;
+    border: 1px solid var(--violet300);
+    max-width: 24rem;
+    height: 50px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+  }
+
+  input {
+    padding: 0 1rem;
+    font-size: var(--font-size);
+    color: var(--violet300);
+  }
+
+  button {
+    background: var(--violet300);
+    color: var(--white);
+    font-size: var(--font-size);
+  }
+
+  label {
+    font-size: var(--font-size);
+    color: var(--violet300);
+    text-transform: uppercase;
+    margin-bottom: -18px;
+  }
+
+}
+
+.cardDateCVV {
+  max-width: 24rem;
+  display: grid;
+  grid-template-rows: 0.6fr 1fr;
+  grid-template-columns: 1fr 1fr;
+
+  .cvv {
+    width: 100%;
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .cardDate {
+    max-width: 12rem;
+    grid-row: 2;
+    grid-column: 1;
+
+    input {
+      width: 45%;
+
+      &:first-child {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  label {
+    grid-row: 1;
+
+    &:last-child {
+      grid-column: 2;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .formWrapper {
+    width: 90%;
+  }
+}
