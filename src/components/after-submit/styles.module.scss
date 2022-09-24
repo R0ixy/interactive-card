@@ -1,0 +1,58 @@
+@import "../../assets/css/variables";
+
+.afterSubmit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  button {
+    width: 24rem;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid var(--violet300);
+    box-sizing: border-box;
+    background: var(--violet300);
+    color: var(--white);
+    font-size: var(--font-size);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  span {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--violet300);
+  }
+
+  p {
+    margin-top: -10px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--violet200);
+  }
+
+  .circle {
+    align-self: center;
+    background: var(--gradient);
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--white);
+  }
+}
+
+@media (max-width: $mobile) {
+  .afterSubmit {
+    width: 90%;
+
+    button {
+      width: 100%;
+    }
+  }
+}
