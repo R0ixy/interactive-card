@@ -8,15 +8,19 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.8",
+    "clsx": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.36.1",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "^16.11.59",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@types/yup": "^0.32.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "sass": "1.53.0",
     "typescript": "^4.8.3"

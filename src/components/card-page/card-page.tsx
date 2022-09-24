@@ -1,5 +1,7 @@
 import React, { FC, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import cardLogo from '../../assets/images/card-logo.svg';
 import { AfterSubmit } from '../after-submit/after-submit';
@@ -8,9 +10,22 @@ import { ICardForm } from '../../common/types/card-from.type';
 
 import styles from './styles.module.scss';
 
+const schema = yup.object({
+  holderName: yup.string().required('Can\'t be blank').matches(
+    /^\s*([a-zA-Z]+\s)*[a-zA-Z]*\s*$/,
+    'Full name must contain only latin characters',
+  ).trim(),
+  cardNumber: yup.string().required('Can\'t be blank').matches(/^\d{4}\d{4}\d{4}\d{4}$/, 'Please enter a valid card number'),
+  expireMonth: yup.string().required('Can\'t be blank').matches(/^0[1-9]|1[0-2]$/, 'Please enter a valid month'),
+  expireYear: yup.string().required('Can\'t be blank').matches(/^\d{2}$/, 'Please enter a valid year'),
+  cvv: yup.string().required('Can\'t be blank').matches(/^\d{3}$/, 'Please enter a valid cvv'),
+}).required();
+
 const CardPage: FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const methods = useForm<ICardForm>();
+  const methods = useForm<ICardForm>({
+    resolver: yupResolver(schema),
+  });
 
   const closeForm = () => {
     setIsSubmitted(true);
@@ -29,9 +44,9 @@ const CardPage: FC = () => {
             methods.watch('holderName') ? methods.watch('holderName') : 'Jane Appleseed'
           }</div>
           <div className={styles.cardExpireDate}>{
-            methods.watch('expireDay') ? methods.watch('expireDay') : '00'
-          }/{
             methods.watch('expireMonth') ? methods.watch('expireMonth') : '00'
+          }/{
+            methods.watch('expireYear') ? methods.watch('expireYear') : '00'
           }</div>
         </div>
         <div className={styles.cardBack}>

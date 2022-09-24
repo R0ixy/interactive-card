@@ -1,8 +1,8 @@
 interface ICardForm {
   holderName: string,
   cardNumber: string,
-  expireDay: string,
   expireMonth: string,
+  expireYear: string,
   cvv: string,
 }
 
