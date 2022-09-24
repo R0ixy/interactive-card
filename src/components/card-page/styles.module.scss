@@ -18,77 +18,81 @@
     display: flex;
     justify-content: center;
 }
-.formWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
 
-    button,
-    input {
-        border-radius: 10px;
-        border: 1px solid var(--violet300);
-        max-width: 24rem;
-        height: 50px;
-        box-sizing: border-box;
-        cursor: pointer;
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 500;
-    }
-
-    input {
-        padding: 0 1rem;
-        font-size: var(--font-size);
-        color: var(--violet300);
-    }
-
-    button {
-        background: var(--violet300);
-        color: var(--white);
-        font-size: var(--font-size);
-    }
-
-    label {
-        font-size: var(--font-size);
-        color: var(--violet300);
-        text-transform: uppercase;
-        margin-bottom: -18px;
-    }
-
+.cardFront,
+.cardBack {
+    position: absolute;
+    width: 19rem;
+    height: 10.5rem;
+    border-radius: 10px;
+    background-size: cover;
+    color: var(--white);
+    box-shadow: 20px 10px 50px 0px rgba(72, 69, 82, 0.47);
+    animation-duration: 0.5s;
+    animation-name: animate-card;
+    animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
 }
 
-.cardDateCVC {
-    max-width: 24rem;
-    display: grid;
-    grid-template-rows: 0.6fr 1fr;
-    grid-template-columns: 1fr 1fr;
-
-    .cvc {
-        width: 100%;
-        grid-column: 2;
-        justify-self: end;
+@keyframes animate-card {
+    0% {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
     }
 
-    .cardDate {
-        max-width: 12rem;
-        grid-row: 2;
-        grid-column: 1;
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
 
-        input {
-            width: 45%;
+.cardFront {
+    top: 20%;
+    right: 56%;
+    background-image: url("../../assets/images/bg-card-front.png");
 
-            &:first-child {
-                margin-right: 0.5rem;
-            }
-        }
+    .cardFrontLogo {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
     }
 
-    label {
-        grid-row: 1;
+    .cardNumber {
+        position: absolute;
+        top: 56%;
+        left: 10%;
+        font-size: 1.5rem;
+    }
 
-        &:last-child {
-            grid-column: 2;
-        }
+    .cardHolderName {
+        position: absolute;
+        text-transform: uppercase;
+        top: 79%;
+        left: 10%;
+    }
+
+    .cardExpireDate{
+        position: absolute;
+        top: 79%;
+        right: 10%;
+    }
+}
+
+.cardBack {
+    top: 52%;
+    right: 52%;
+    background-image: url("../../assets/images/bg-card-back.png");
+
+    .cardBackCVV {
+        position: absolute;
+        top: 44%;
+        right: 12%;
+    }
+}
+@media (min-width: $desktop) {
+    .cardFront,
+    .cardBack {
+        width: 25rem;
+        height: 14rem;
     }
 }
 
@@ -110,5 +114,15 @@
 
     .formWrapper {
         width: 90%;
+    }
+
+    .cardFront {
+        top: 16%;
+        left: 3%;
+        z-index: 1;
+    }
+    .cardBack {
+        top: 2%;
+        right: 5%;
     }
 }
