@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/interactive-card/static/css/main.c31a78eb.css",
-    "main.js": "/interactive-card/static/js/main.97fefb91.js",
+    "main.css": "/interactive-card/static/css/main.757e42d2.css",
+    "main.js": "/interactive-card/static/js/main.9cde8eb3.js",
     "static/media/bg-main-desktop.png": "/interactive-card/static/media/bg-main-desktop.806e7aa7b4dbc1d78bc3.png",
     "static/media/bg-card-back.png": "/interactive-card/static/media/bg-card-back.23f68fa3aa3d5b33dfc8.png",
     "static/media/bg-card-front.png": "/interactive-card/static/media/bg-card-front.8153e2ca184402a8385f.png",
     "static/media/bg-main-mobile.png": "/interactive-card/static/media/bg-main-mobile.caa4689407777a312ede.png",
     "index.html": "/interactive-card/index.html",
     "static/media/card-logo.svg": "/interactive-card/static/media/card-logo.8ca9036515954c3f8191559dce9c7bdf.svg",
-    "main.c31a78eb.css.map": "/interactive-card/static/css/main.c31a78eb.css.map",
-    "main.97fefb91.js.map": "/interactive-card/static/js/main.97fefb91.js.map"
+    "main.757e42d2.css.map": "/interactive-card/static/css/main.757e42d2.css.map",
+    "main.9cde8eb3.js.map": "/interactive-card/static/js/main.9cde8eb3.js.map"
   },
   "entrypoints": [
-    "static/css/main.c31a78eb.css",
-    "static/js/main.97fefb91.js"
+    "static/css/main.757e42d2.css",
+    "static/js/main.9cde8eb3.js"
   ]
 }
