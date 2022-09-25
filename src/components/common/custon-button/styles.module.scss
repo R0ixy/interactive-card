@@ -1,0 +1,22 @@
+@import "../../../assets/css/variables";
+
+.button {
+  width: 24rem;
+  height: 50px;
+  min-height: 50px;
+  border-radius: 10px;
+  border: 1px solid var(--violet300);
+  box-sizing: border-box;
+  background: var(--violet300);
+  color: var(--white);
+  font-size: var(--font-size);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: $mobile) {
+  .button {
+    width: 100%;
+  }
+}

@@ -5,6 +5,7 @@ import { useFormContext } from 'react-hook-form';
 import { ICardForm } from '../../common/types/card-from.type';
 
 import styles from './styles.module.scss';
+import { CustomButton } from '../common/custon-button/custom-button';
 
 const CardForm: FC<{ closeForm: () => void }> = ({ closeForm }) => {
   const { register, handleSubmit, formState:  { errors } } = useFormContext<ICardForm>();
@@ -53,7 +54,7 @@ const CardForm: FC<{ closeForm: () => void }> = ({ closeForm }) => {
         />
         <p className={styles.error}>{errors.cvv?.message}</p>
       </div>
-      <button type="submit">Confirm</button>
+      <CustomButton isSubmit={true}>Confirm</CustomButton>
     </form>
   );
 };

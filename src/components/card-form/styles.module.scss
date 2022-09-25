@@ -7,7 +7,6 @@
   justify-content: center;
   gap: 20px;
 
-  button,
   input {
     border-radius: 10px;
     max-width: 24rem;
@@ -33,10 +32,6 @@
 
   button {
     margin-top: 18px;
-    border: 1px solid var(--violet300);
-    background: var(--violet300);
-    color: var(--white);
-    font-size: var(--font-size);
   }
 
   label {

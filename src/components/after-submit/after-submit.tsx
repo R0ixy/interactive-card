@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import styles from './styles.module.scss';
+import { CustomButton } from '../common/custon-button/custom-button';
 
 const AfterSubmit: FC = () => {
   return(
@@ -8,7 +9,7 @@ const AfterSubmit: FC = () => {
       <div className={styles.circle}>&#10004;</div>
       <span>Thank you!</span>
       <p>We've added your card details</p>
-      <button className={styles.button}>Continue</button>
+      <CustomButton>Continue</CustomButton>
     </div>
   );
 };
